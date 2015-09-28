@@ -1,0 +1,61 @@
+{
+    "name": "ab-softlab/tippgame",
+    "type": "typo3-cms-extension",
+    "description": "Tippgame",
+    "keywords": [
+        "TYPO3",
+        "extension",
+        "tippgame"
+    ],
+    "homepage": "http://ab-softlab.de",
+    "authors": [
+        {
+            "name": "Anja Leichsenring",
+            "email": "aleichsenring@ab-softlab.de",
+            "role": "Developer",
+            "homepage": "http://ab-softlab.de"
+        }
+    ],
+    "license": "GPL-2.0+",
+    "require": {
+        "typo3/cms-core": ">=7.3.0,<8.0"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "1.4.*@dev",
+        "phpunit/phpunit": "~4.8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ABS\\Tippgame\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ABS\\Tippgame\\Tests\\": "Tests",
+            "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/"
+        }
+    },
+    "replace": {
+        "tippgame": "self.version",
+        "typo3-ter/tippgame": "self.version"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "mkdir -p .Build/Web/typo3conf/ext/",
+            "[ -L .Build/Web/typo3conf/ext/tippgame ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/tippgame"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/Web"
+        }
+    }
+}
