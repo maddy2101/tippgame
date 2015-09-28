@@ -44,7 +44,7 @@ class RenderingTest extends FunctionalTestCase {
 	 */
 	public function emailViewHelperWorksWithSpamProtection() {
 		$requestArguments = array('id' => '1');
-		$expectedContent = '<a href="javascript:linkTo_UnCryptMailto(\'ocknvq,kphqBjgnjwo0kq\');">aleichsenring(AT)ab-softlab.(DOT)de</a>';
+		$expectedContent = '<a href="javascript:linkTo_UnCryptMailto(\'ocknvq,cngkejugptkpiBcd\/uqhvncd0fg\');">aleichsenring(AT)ab-softlab(DOT)de</a>';
 		$this->assertSame($expectedContent, $this->fetchFrontendResponse($requestArguments)->getContent());
 	}
 
