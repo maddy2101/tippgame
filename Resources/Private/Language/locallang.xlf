@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-05-24T02:13:41Z" product-name="tippgame">
+		<header />
+		<body>
+			<trans-unit id="header.administration.list">
+				<source>Tournaments</source>
+			</trans-unit>
+			<trans-unit id="button.tournament.new">
+				<source>new tournament</source>
+			</trans-unit>
+			<trans-unit id="link.tournament.newRound">
+				<source>Create new round</source>
+			</trans-unit>
+			<trans-unit id="tab_rounds">
+				<source>Rounds</source>
+			</trans-unit>
+			<trans-unit id="tab_players">
+				<source>Players</source>
+			</trans-unit>
+
+			<trans-unit id="tournament">
+				<source>Tournament</source>
+			</trans-unit>
+			<trans-unit id="tournament.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tournament.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tournament.stop">
+				<source>Stop</source>
+			</trans-unit>
+			<trans-unit id="tournament.players">
+				<source>Players</source>
+			</trans-unit>
+			<trans-unit id="tournament.rounds">
+				<source>Rounds</source>
+			</trans-unit>
+			<trans-unit id="tournament.hidden">
+				<source>Hide Tournament</source>
+			</trans-unit>
+
+			<trans-unit id="round">
+				<source>Round</source>
+			</trans-unit>
+			<trans-unit id="round.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="round.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="round.stop">
+				<source>Stop</source>
+			</trans-unit>
+			<trans-unit id="round.tournament">
+				<source>Tournament</source>
+			</trans-unit>
+			<trans-unit id="round.hidden">
+				<source>Hide Round</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

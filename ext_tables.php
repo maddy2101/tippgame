@@ -1,5 +1,6 @@
 <?php
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 if (!defined('TYPO3_MODE')) {
@@ -17,3 +18,5 @@ ExtensionUtility::registerPlugin(
 	'admin',
 	'Tippgame Admin View'
 );
+
+ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Tippgame');
