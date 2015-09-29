@@ -14,7 +14,6 @@ namespace ABS\Tippgame\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Tournament Model
@@ -38,12 +37,124 @@ class Tournament extends AbstractEntity
     protected $stop;
 
     /**
-     * @var ObjectStorage<\ABS\Tippgame\Domain\Model\Player>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUser>
      */
     protected $players = null;
 
     /**
-     * @var ObjectStorage<\ABS\Tippgame\Domain\Model\Round>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\ABS\Tippgame\Domain\Model\Round>
      */
     protected $rounds = null;
+
+    /**
+     * get the Title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * sets the Title
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * get the Start
+     *
+     * @return \DateTime
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * sets the Start
+     *
+     * @param \DateTime $start
+     *
+     * @return void
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+    }
+
+    /**
+     * get the Stop
+     *
+     * @return \DateTime
+     */
+    public function getStop()
+    {
+        return $this->stop;
+    }
+
+    /**
+     * sets the Stop
+     *
+     * @param \DateTime $stop
+     *
+     * @return void
+     */
+    public function setStop($stop)
+    {
+        $this->stop = $stop;
+    }
+
+    /**
+     * get the Players
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * sets the Players
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $players
+     *
+     * @return void
+     */
+    public function setPlayers($players)
+    {
+        $this->players = $players;
+    }
+
+    /**
+     * get the Rounds
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getRounds()
+    {
+        return $this->rounds;
+    }
+
+    /**
+     * sets the Rounds
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $rounds
+     *
+     * @return void
+     */
+    public function setRounds($rounds)
+    {
+        $this->rounds = $rounds;
+    }
+
+
 }

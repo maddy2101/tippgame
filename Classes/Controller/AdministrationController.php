@@ -13,6 +13,7 @@ namespace ABS\Tippgame\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use ABS\Tippgame\Domain\Repository\TournamentRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -22,10 +23,23 @@ class AdministrationController extends ActionController
 {
 
     /**
+     * @var \ABS\Tippgame\Domain\Repository\TournamentRepository
+     */
+    protected $tournamentRepository;
+
+    /**
+     * @param TournamentRepository $tournamentRepository
+     */
+    public function injectTournamentRepository(TournamentRepository $tournamentRepository) {
+        $this->tournamentRepository = $tournamentRepository;
+    }
+
+    /**
      * list action
      */
     public function listAction()
     {
-
+        $tournaments = $this->tournamentRepository->findAllOrderedByStart();
+        $this->view->assign('tournaments', $tournaments);
     }
 }
