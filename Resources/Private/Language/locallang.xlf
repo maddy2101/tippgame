@@ -40,6 +40,9 @@
 			<trans-unit id="tournament.hidden">
 				<source>Hide Tournament</source>
 			</trans-unit>
+			<trans-unit id="empty_item">
+				<source>-- choose one --</source>
+			</trans-unit>
 
 			<trans-unit id="round">
 				<source>Round</source>

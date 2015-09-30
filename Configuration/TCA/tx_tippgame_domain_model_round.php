@@ -93,7 +93,13 @@ return [
             'exclude' => true,
             'config' => [
                 'type' => 'select',
-        #        'renderMode' => 'singlebox',
+                'renderMode' => 'singlebox',
+                'items' => [
+                    '0' => [
+                        '0' => 'LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:empty_item',
+                        '1' => '0'
+                    ]
+                ],
                 'maxitems' => 1,
                 'foreign_table' => 'tx_tippgame_domain_model_tournament',
                 'foreign_field' => 'rounds',
