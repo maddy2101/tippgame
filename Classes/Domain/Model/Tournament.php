@@ -155,6 +155,4 @@ class Tournament extends AbstractEntity
     {
         $this->rounds = $rounds;
     }
-
-
 }

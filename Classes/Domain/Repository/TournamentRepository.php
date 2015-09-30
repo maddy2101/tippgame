@@ -29,7 +29,7 @@ class TournamentRepository extends Repository
     {
         $query = $this->createQuery();
         $query->setOrderings(['start' => QueryInterface::ORDER_ASCENDING]);
+
         return $query->execute();
     }
-
 }

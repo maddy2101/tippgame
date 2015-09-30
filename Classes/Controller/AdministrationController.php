@@ -30,7 +30,8 @@ class AdministrationController extends ActionController
     /**
      * @param TournamentRepository $tournamentRepository
      */
-    public function injectTournamentRepository(TournamentRepository $tournamentRepository) {
+    public function injectTournamentRepository(TournamentRepository $tournamentRepository)
+    {
         $this->tournamentRepository = $tournamentRepository;
     }
 

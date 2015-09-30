@@ -128,6 +128,4 @@ class Round extends AbstractEntity
     {
         $this->tournament = $tournament;
     }
-
-
 }
