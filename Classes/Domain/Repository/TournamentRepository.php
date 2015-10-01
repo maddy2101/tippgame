@@ -28,7 +28,7 @@ class TournamentRepository extends Repository
     public function findAllOrderedByStart()
     {
         $query = $this->createQuery();
-        $query->setOrderings(['start' => QueryInterface::ORDER_ASCENDING]);
+        $query->setOrderings(['start' => QueryInterface::ORDER_DESCENDING]);
 
         return $query->execute();
     }
