@@ -8,7 +8,7 @@ env:
   matrix:
     - TYPO3_VERSION=7.4.0
     - TYPO3_VERSION=7.5.0
-    - TYPO3_VERSION=dev-master
+    - TYPO3_VERSION=\'dev-master as 7.6.0\'
 
 sudo: false
 
