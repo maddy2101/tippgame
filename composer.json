@@ -17,8 +17,16 @@
         }
     ],
     "license": "GPL-2.0+",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://composer.typo3.org"
+        }
+    ],
     "require": {
-        "FortAwesome/Font-Awesome": "*"
+        "FortAwesome/Font-Awesome": "*",
+        "typo3-ter/typoscript-rendering": "^1.0",
+        "eonasdan/bootstrap-datetimepicker": "^4.17"
     },
     "require-dev": {
         "mikey179/vfsStream": "1.4.*@dev",

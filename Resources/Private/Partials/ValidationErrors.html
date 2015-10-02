@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+<head>
+	<title>Partials: ValidationErrors</title>
+</head>
+<body>
+<f:section name="Main">
+	<!-- Start file EXT:tippgame/Resources/Private/Partials/ValidationErrors -->
+	<f:form.validationResults>
+		<f:for each="{validationResults.flattenedErrors}" as="errors">
+			<f:if condition="{errors}">
+				<ul>
+					<f:for each="{errors}" as="error">
+						<li>{error}</li>
+					</f:for>
+				</ul>
+			</f:if>
+		</f:for>
+	</f:form.validationResults>
+	<!-- End file EXT:tippgame/Resources/Private/Partials/ValidationErrors -->
+</f:section>
+</body>
+</html>

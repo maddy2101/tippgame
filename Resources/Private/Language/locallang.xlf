@@ -6,6 +6,12 @@
 			<trans-unit id="header.administration.list">
 				<source>Tournaments</source>
 			</trans-unit>
+			<trans-unit id="button.create">
+				<source>Create</source>
+			</trans-unit>
+			<trans-unit id="button.cancel">
+				<source>Cancel</source>
+			</trans-unit>
 			<trans-unit id="button.tournament.new">
 				<source>new tournament</source>
 			</trans-unit>

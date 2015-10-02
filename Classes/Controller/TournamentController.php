@@ -14,15 +14,50 @@ namespace ABS\Tippgame\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use ABS\Tippgame\Domain\Model\Tournament;
+use ABS\Tippgame\Domain\Repository\TournamentRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class TournamentController extends ActionController
 {
 
     /**
+     * @var TournamentRepository
+     */
+    protected $tournamentRepository;
+
+    /**
+     * @param TournamentRepository $tournamentRepository
+     */
+    public function injectTournamentRepository(TournamentRepository $tournamentRepository)
+    {
+        $this->tournamentRepository = $tournamentRepository;
+    }
+
+    /**
      * list action for logged in user
      */
     public function listAction()
     {
+    }
+
+    /**
+     *
+     */
+    public function newAction()
+    {
+        // do nothing, only show the template
+    }
+
+    /**
+     * @param Tournament $tournament
+     *
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     */
+    public function createAction(Tournament $tournament)
+    {
+        $this->addFlashMessage('Tournament successful created', 'Success');
+        $this->tournamentRepository->add($tournament);
+        $this->redirect('list', 'Administration');
     }
 }

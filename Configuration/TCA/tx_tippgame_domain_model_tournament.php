@@ -110,7 +110,7 @@ return [
                 'size' => 10,
                 'maxitems' => 9999,
                 'foreign_table' => 'fe_users',
-                'foreign_table_where' => ' AND fe_users.pid = 28 AND fe_users.usergroup = 2',
+                'foreign_table_where' => ' AND fe_users.pid = 28 AND fe_users.usergroup = 2'
             ],
         ],
     ],

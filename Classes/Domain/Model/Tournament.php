@@ -23,6 +23,7 @@ class Tournament extends AbstractEntity
 
     /**
      * @var string
+     * @validate NotEmpty
      */
     protected $title = '';
 

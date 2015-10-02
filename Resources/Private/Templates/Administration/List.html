@@ -1,19 +1,55 @@
-<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
-	 xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/CMS/Fluid/ViewHelpers">
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+<div xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 lang="en">
 	<f:layout name="Default"/>
 	<title>Templates: List</title>
+
+	<f:section name="modal">
+		<div class="modal fade" id="newTournamentModal" tabindex="-1" role="dialog"
+			 aria-labelledby="newTournamentModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="newTournamentModalLabel">
+							<f:translate key="button.tournament.new"/>
+						</h4>
+					</div>
+					<div class="modal-body">
+
+					</div>
+					<div class="modal-footer">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+
 	<f:section name="main">
 		<!-- Start file EXT:tippgame/Resources/Private/Templates/Administration/List -->
-		<h1><i class="fa fa-trophy fa-fw"></i><f:translate key="header.administration.list" /></h1>
-		<button type="button" class="btn btn-lg btn-primary" id="tournament_new">
+		<f:flashMessages />
+		<h1><i class="fa fa-trophy fa-fw"></i>
+			<f:translate key="header.administration.list"/>
+		</h1>
+		<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" id="newTournament"
+				data-target="#newTournamentModal" data-url="{h:uri.ajaxAction(action:'new',controller:'Tournament',pluginName:'admin')}">
 			<f:translate key="button.tournament.new"/>
 		</button>
 		<table class="table table-striped">
 			<thead>
 			<tr>
-				<th><f:translate key="tournament.title" /></th>
-				<th><f:translate key="tournament.start" /></th>
-				<th><f:translate key="tournament.stop" /></th>
+				<th>
+					<f:translate key="tournament.title"/>
+				</th>
+				<th>
+					<f:translate key="tournament.start"/>
+				</th>
+				<th>
+					<f:translate key="tournament.stop"/>
+				</th>
 			</tr>
 			</thead>
 			<tbody>
