@@ -23,11 +23,13 @@ class Round extends AbstractEntity
 
     /**
      * @var string
+     * @validate NotEmpty
      */
     protected $title = '';
 
     /**
      * @var \DateTime
+     * @validate NotEmpty
      */
     protected $start;
 

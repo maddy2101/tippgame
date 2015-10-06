@@ -1,0 +1,74 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+<div xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	 lang="en">
+	<f:layout name="Default"/>
+	<title>Templates: Show</title>
+
+	<f:section name="modal">
+		<div class="modal fade" id="newRoundModal" tabindex="-1" role="dialog"
+			 aria-labelledby="newRoundModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="newRoundModalLabel">
+							<f:translate key="button.round.new"/>
+						</h4>
+					</div>
+					<div class="modal-body">
+
+					</div>
+					<div class="modal-footer">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+
+	<f:section name="main">
+		<!-- Start file EXT:tippgame/Resources/Private/Templates/Tournament/Show -->
+		<h2>{tournament.title}</h2>
+
+		<h3>
+			<f:translate key="header.tournament.rounds"/>
+		</h3>
+		<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" id="newRound"
+				data-target="#newRoundModal"
+				data-url="{h:uri.ajaxAction(action:'new',controller:'Round',pluginName:'admin',arguments:{tournament:tournament})}">
+			<f:translate key="button.round.new"/>
+		</button>
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<f:for each="{tournament.sortedRounds}" as="round" iteration="iterator">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading{iterator.cycle}">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion"
+							   class="collapsed"
+							   href="#collapse{iterator.cycle}" aria-expanded="true"
+							   aria-controls="collapse{iterator.cycle}">
+								{round.title} ({round.start -> f:format.date(format:'d.m.Y')} -
+								{round.stop -> f:format.date(format:'d.m.Y')})
+							</a>
+						</h4>
+					</div>
+					<div id="collapse{iterator.cycle}" class="panel-collapse collapse"
+						 role="tabpanel"
+						 aria-labelledby="heading{iterator.cycle}">
+						<div class="panel-body">
+							This will be games, quoues and results listing
+						</div>
+					</div>
+				</div>
+			</f:for>
+		</div>
+		<h3>
+			<f:translate key="header.tournament.players"/>
+		</h3>
+		<!-- End file EXT:tippgame/Resources/Private/Templates/Tournament/Show -->
+	</f:section>
+</div>

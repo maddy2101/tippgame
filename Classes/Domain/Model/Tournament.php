@@ -14,6 +14,7 @@ namespace ABS\Tippgame\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Tournament Model
@@ -155,5 +156,27 @@ class Tournament extends AbstractEntity
     public function setRounds($rounds)
     {
         $this->rounds = $rounds;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getSortedRounds()
+    {
+        $rounds = $this->getRounds();
+        $sortedRounds = new ObjectStorage();
+        $sortingRounds = [];
+        /** @var Round $round */
+        foreach ($rounds as $round) {
+            if ($round->getStart() instanceof \DateTime && $round->getStart()->getTimestamp() > 0) {
+                $sortingRounds[$round->getStart()->getTimestamp()] = $round;
+            }
+        }
+        ksort($sortingRounds);
+        foreach ($sortingRounds as $round) {
+            $sortedRounds->attach($round);
+        }
+        return $sortedRounds;
+
     }
 }

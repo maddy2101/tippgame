@@ -29,6 +29,14 @@ $("body").on("click", '#newTournament', function (e) {
 	}, 500);
 });
 
+$("body").on("click", '#newRound', function (e) {
+	url = $(this).attr('data-url');
+	$('#newRoundModal .modal-body').load(url);
+	setTimeout(function () {
+		initializeDateTimePicker();
+	}, 500);
+});
+
 $("body").on("click", '#createTournament', function (e) {
 	e.preventDefault();
 
@@ -62,5 +70,41 @@ $("body").on("click", '#createTournament', function (e) {
 		.fail(function () {
 			throw new Error("AJAX Form submission error");
 		});
+
+});
+
+$("body").on("click", '#createRound', function (e) {
+	e.preventDefault();
+
+	$(this).attr('disabled', 'disabled');
+	var form = $(this).closest('form'),
+			serializedData = form.serialize(),
+			action = form.attr('action');
+	$.ajax(
+			{
+				type: "POST",
+				url: action,
+				data: serializedData
+
+			})
+			.done(function (res) {
+				var validationError = $(res).find('#editForm');
+				if (validationError.length) {
+					$('#editForm').html(validationError.html());
+					setTimeout(function () {
+						initializeDateTimePicker();
+					}, 500);
+				} else {
+					var result = $(res).find('.tx_tippgame');
+					$('.modal').on('hidden.bs.modal', function (e) {
+						$('.tx_tippgame').html(result.html());
+						$('.modal').off('hidden.bs.modal');
+					});
+					$('.modal').modal('hide');
+				}
+			})
+			.fail(function () {
+				throw new Error("AJAX Form submission error");
+			});
 
 });

@@ -19,7 +19,8 @@ ExtensionUtility::configurePlugin(
     'admin',
     [
         'Administration' => 'list',
-        'Tournament' => 'list, new, create',
+        'Tournament' => 'list, new, create, show',
+        'Round' => 'new,create',
     ],
     []
 );

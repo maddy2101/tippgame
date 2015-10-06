@@ -61,25 +61,21 @@
 						<f:if condition="{today} <= {tournament.stop}">
 							<f:then>
 								<tr class="green">
-									<td>{tournament.title}</td>
-									<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
-									<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+									<f:render partial="Administration/Tournament/Column" section="Main" arguments="{tournament:tournament}" />
 								</tr>
 							</f:then>
 							<f:else>
 								<tr>
-									<td>{tournament.title}</td>
-									<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
-									<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+									<f:render partial="Administration/Tournament/Column"
+											  section="Main" arguments="{tournament:tournament}"/>
 								</tr>
 							</f:else>
 						</f:if>
 					</f:then>
 					<f:else>
 						<tr>
-							<td>{tournament.title}</td>
-							<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
-							<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+							<f:render partial="Administration/Tournament/Column" section="Main"
+									  arguments="{tournament:tournament}"/>
 						</tr>
 					</f:else>
 				</f:if>

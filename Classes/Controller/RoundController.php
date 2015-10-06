@@ -2,7 +2,7 @@
 namespace ABS\Tippgame\Controller;
 
 /*
- * This file is part of the TYPO3 extension tippgame.
+ * This file is part of the TYPO3 CMS project.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -13,13 +13,16 @@ namespace ABS\Tippgame\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
+use ABS\Tippgame\Domain\Model\Round;
 use ABS\Tippgame\Domain\Model\Tournament;
 use ABS\Tippgame\Domain\Repository\TournamentRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 
-class TournamentController extends ActionController
+/**
+ * Round Controller
+ */
+class RoundController extends ActionController
 {
 
     /**
@@ -28,35 +31,12 @@ class TournamentController extends ActionController
     protected $tournamentRepository;
 
     /**
-     * @param TournamentRepository $tournamentRepository
-     */
-    public function injectTournamentRepository(TournamentRepository $tournamentRepository)
-    {
-        $this->tournamentRepository = $tournamentRepository;
-    }
-
-    /**
-     * list action for logged in user
-     */
-    public function listAction()
-    {
-    }
-
-    /**
-     *
-     */
-    public function newAction()
-    {
-        // do nothing, only show the template
-    }
-
-    /**
      *
      */
     public function initializeAction()
     {
-        if (isset($this->arguments['tournament'])) {
-            $this->arguments['tournament']
+        if (isset($this->arguments['round'])) {
+            $this->arguments['round']
                 ->getPropertyMappingConfiguration()
                 ->forProperty('start')
                 ->setTypeConverterOption(
@@ -64,7 +44,7 @@ class TournamentController extends ActionController
                     DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                     'd.m.Y'
                 );
-            $this->arguments['tournament']
+            $this->arguments['round']
                 ->getPropertyMappingConfiguration()
                 ->forProperty('stop')
                 ->setTypeConverterOption(
@@ -76,22 +56,31 @@ class TournamentController extends ActionController
     }
 
     /**
-     * @param Tournament $tournament
-     *
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @param TournamentRepository $tournamentRepository
      */
-    public function createAction(Tournament $tournament)
+    public function injectTournamentRepository(TournamentRepository $tournamentRepository)
     {
-        $this->addFlashMessage('Tournament successful created', 'Success');
-        $this->tournamentRepository->add($tournament);
-        $this->redirect('list', 'Administration');
+        $this->tournamentRepository = $tournamentRepository;
     }
 
     /**
-     * @param Tournament $tournament
+     * @param Tournament|null $tournament
      */
-    public function showAction(Tournament $tournament)
+    public function newAction(Tournament $tournament = null)
     {
         $this->view->assign('tournament', $tournament);
     }
+
+    /**
+     * @param Round $round
+     */
+    public function createAction(Round $round)
+    {
+        $tournament = $round->getTournament();
+        $tournament->getRounds()->attach($round);
+        $this->tournamentRepository->update($tournament);
+        $this->addFlashMessage('Tournament successful created', 'Success');
+        $this->redirect('show', 'Tournament', null, ['tournament' => $tournament]);
+    }
+
 }

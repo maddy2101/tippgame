@@ -6,6 +6,12 @@
 			<trans-unit id="header.administration.list">
 				<source>Tournaments</source>
 			</trans-unit>
+			<trans-unit id="header.tournament.rounds">
+				<source>Rounds</source>
+			</trans-unit>
+			<trans-unit id="header.tournament.players">
+				<source>Players</source>
+			</trans-unit>
 			<trans-unit id="button.create">
 				<source>Create</source>
 			</trans-unit>
@@ -15,6 +21,9 @@
 			<trans-unit id="button.tournament.new">
 				<source>new tournament</source>
 			</trans-unit>
+			<trans-unit id="button.round.new">
+				<source>new round</source>
+			</trans-unit>
 			<trans-unit id="link.tournament.newRound">
 				<source>Create new round</source>
 			</trans-unit>
@@ -23,6 +32,9 @@
 			</trans-unit>
 			<trans-unit id="tab_players">
 				<source>Players</source>
+			</trans-unit>
+			<trans-unit id="actions">
+				<source>Actions</source>
 			</trans-unit>
 
 			<trans-unit id="tournament">

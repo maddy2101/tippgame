@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+<head>
+	<title>Partials: Column</title>
+</head>
+<body>
+<f:section name="Main">
+	<!-- Start file EXT:tippgame/Resources/Private/Partials/Administration/TournamentColumn -->
+	<td><f:link.action action="show" controller="Tournament" arguments="{tournament:tournament}">{tournament.title}</f:link.action></td>
+	<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
+	<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+	<!-- End file EXT:tippgame/Resources/Private/Partials/Administration/TournamentColumn -->
+</f:section>
+</body>
+</html>
