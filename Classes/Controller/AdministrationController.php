@@ -42,5 +42,6 @@ class AdministrationController extends ActionController
     {
         $tournaments = $this->tournamentRepository->findAllOrderedByStart();
         $this->view->assign('tournaments', $tournaments);
+        $this->view->assign('today', new \DateTime('now'));
     }
 }

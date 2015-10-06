@@ -10,6 +10,7 @@
 			 aria-labelledby="newTournamentModalLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
+
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span></button>
@@ -30,12 +31,13 @@
 
 	<f:section name="main">
 		<!-- Start file EXT:tippgame/Resources/Private/Templates/Administration/List -->
-		<f:flashMessages />
+		<f:flashMessages/>
 		<h1><i class="fa fa-trophy fa-fw"></i>
 			<f:translate key="header.administration.list"/>
 		</h1>
 		<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" id="newTournament"
-				data-target="#newTournamentModal" data-url="{h:uri.ajaxAction(action:'new',controller:'Tournament',pluginName:'admin')}">
+				data-target="#newTournamentModal"
+				data-url="{h:uri.ajaxAction(action:'new',controller:'Tournament',pluginName:'admin')}">
 			<f:translate key="button.tournament.new"/>
 		</button>
 		<table class="table table-striped">
@@ -54,11 +56,34 @@
 			</thead>
 			<tbody>
 			<f:for each="{tournaments}" as="tournament">
-				<tr>
-					<td>{tournament.title}</td>
-					<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
-					<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
-				</tr>
+				<f:if condition="{today} >= {tournament.start}">
+					<f:then>
+						<f:if condition="{today} <= {tournament.stop}">
+							<f:then>
+								<tr class="green">
+									<td>{tournament.title}</td>
+									<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
+									<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+								</tr>
+							</f:then>
+							<f:else>
+								<tr>
+									<td>{tournament.title}</td>
+									<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
+									<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+								</tr>
+							</f:else>
+						</f:if>
+					</f:then>
+					<f:else>
+						<tr>
+							<td>{tournament.title}</td>
+							<td>{tournament.start -> f:format.date(format:'d.m.Y')}</td>
+							<td>{tournament.stop -> f:format.date(format:'d.m.Y')}</td>
+						</tr>
+					</f:else>
+				</f:if>
+
 			</f:for>
 			</tbody>
 		</table>

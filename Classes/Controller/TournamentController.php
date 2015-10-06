@@ -17,6 +17,7 @@ namespace ABS\Tippgame\Controller;
 use ABS\Tippgame\Domain\Model\Tournament;
 use ABS\Tippgame\Domain\Repository\TournamentRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 
 class TournamentController extends ActionController
 {
@@ -47,6 +48,31 @@ class TournamentController extends ActionController
     public function newAction()
     {
         // do nothing, only show the template
+    }
+
+    /**
+     *
+     */
+    public function initializeAction()
+    {
+        if (isset($this->arguments['tournament'])) {
+            $this->arguments['tournament']
+                ->getPropertyMappingConfiguration()
+                ->forProperty('start')
+                ->setTypeConverterOption(
+                    DateTimeConverter::class,
+                    DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                    'd.m.Y'
+                );
+            $this->arguments['tournament']
+                ->getPropertyMappingConfiguration()
+                ->forProperty('stop')
+                ->setTypeConverterOption(
+                    DateTimeConverter::class,
+                    DateTimeConverter::CONFIGURATION_DATE_FORMAT,
+                    'd.m.Y'
+                );
+        }
     }
 
     /**
