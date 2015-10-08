@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+<head>
+	<title>Partials: Modal</title>
+</head>
+<body>
+<f:section name="Main">
+	<!-- Start file EXT:tippgame/Resources/Private/Partials/Modal -->
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+		 aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="modalLabel"><i class="fa fa-{iconIdentifier} fa-fw"></i>
+						<f:translate key="{translateKey}"/></h4>
+				</div>
+				<div class="modal-body"></div>
+			</div>
+		</div>
+	</div>
+	<!-- End file EXT:tippgame/Resources/Private/Partials/Modal -->
+</f:section>
+</body>
+</html>

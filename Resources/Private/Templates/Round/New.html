@@ -5,7 +5,7 @@
 	<f:section name="main">
 		<!-- Start file EXT:tippgame/Resources/Private/Templates/Round/New -->
 		<f:form action="create" controller="Round" object="{round}"
-				name="round" id="editForm">
+				name="round" id="ajaxForm">
 			<f:flashMessages/>
 			<f:render partial="ValidationErrors" section="Main"/>
 			<f:form.hidden property="tournament" value="{tournament}" />

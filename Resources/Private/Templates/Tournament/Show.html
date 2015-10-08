@@ -6,27 +6,7 @@
 	<title>Templates: Show</title>
 
 	<f:section name="modal">
-		<div class="modal fade" id="newRoundModal" tabindex="-1" role="dialog"
-			 aria-labelledby="newRoundModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="newRoundModalLabel">
-							<f:translate key="button.round.new"/>
-						</h4>
-					</div>
-					<div class="modal-body">
-
-					</div>
-					<div class="modal-footer">
-
-					</div>
-				</div>
-			</div>
-		</div>
+		<f:render partial="Modal" section="Main" arguments="{iconIdentifier:'bullseye',translateKey:'button.round.new'}" />
 	</f:section>
 
 	<f:section name="main">
@@ -37,7 +17,7 @@
 			<i class="fa fa-bullseye fa-fw"></i><f:translate key="header.tournament.rounds"/>
 		</h2>
 		<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" id="newRound"
-				data-target="#newRoundModal"
+				data-target="#modal"
 				data-url="{h:uri.ajaxAction(action:'new',controller:'Round',pluginName:'admin',arguments:{tournament:tournament})}">
 			<f:translate key="button.round.new"/>
 		</button>

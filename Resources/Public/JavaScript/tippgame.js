@@ -21,20 +21,17 @@ function initializeDateTimePicker() {
 	});
 }
 
-$("body").on("click", '#newTournament', function (e) {
-	url = $(this).attr('data-url');
-	$('#newTournamentModal .modal-body').load(url);
-	setTimeout(function () {
-		initializeDateTimePicker();
-	}, 500);
-});
+$('.modal').on('show.bs.modal', function (e) {
+	var $me = $(this),
+			$trigger = $(e.relatedTarget);
 
-$("body").on("click", '#newRound', function (e) {
-	url = $(this).attr('data-url');
-	$('#newRoundModal .modal-body').load(url);
-	setTimeout(function () {
-		initializeDateTimePicker();
-	}, 500);
+	$.ajax({
+			   url: $trigger.data('url'),
+			   success: function (data) {
+				   $me.find('.modal-body').html(data);
+				   initializeDateTimePicker();
+			   }
+		   });
 });
 
 $("body").on("click", '#createTournament', function (e) {
@@ -52,9 +49,9 @@ $("body").on("click", '#createTournament', function (e) {
 
 		})
 		.done(function (res) {
-			var validationError = $(res).find('#editForm');
+			var validationError = $(res).find('#ajaxForm');
 			if (validationError.length) {
-				$('#editForm').html(validationError.html());
+				$('#ajaxForm').html(validationError.html());
 				setTimeout(function () {
 					initializeDateTimePicker();
 				}, 500);
@@ -78,33 +75,33 @@ $("body").on("click", '#createRound', function (e) {
 
 	$(this).attr('disabled', 'disabled');
 	var form = $(this).closest('form'),
-			serializedData = form.serialize(),
-			action = form.attr('action');
+		serializedData = form.serialize(),
+		action = form.attr('action');
 	$.ajax(
-			{
-				type: "POST",
-				url: action,
-				data: serializedData
+		{
+			type: "POST",
+			url: action,
+			data: serializedData
 
-			})
-			.done(function (res) {
-				var validationError = $(res).find('#editForm');
-				if (validationError.length) {
-					$('#editForm').html(validationError.html());
-					setTimeout(function () {
-						initializeDateTimePicker();
-					}, 500);
-				} else {
-					var result = $(res).find('.tx_tippgame');
-					$('.modal').on('hidden.bs.modal', function (e) {
-						$('.tx_tippgame').html(result.html());
-						$('.modal').off('hidden.bs.modal');
-					});
-					$('.modal').modal('hide');
-				}
-			})
-			.fail(function () {
-				throw new Error("AJAX Form submission error");
-			});
+		})
+		.done(function (res) {
+			var validationError = $(res).find('#ajaxForm');
+			if (validationError.length) {
+				$('#ajaxForm').html(validationError.html());
+				setTimeout(function () {
+					initializeDateTimePicker();
+				}, 500);
+			} else {
+				var result = $(res).find('.tx_tippgame');
+				$('.modal').on('hidden.bs.modal', function (e) {
+					$('.tx_tippgame').html(result.html());
+					$('.modal').off('hidden.bs.modal');
+				});
+				$('.modal').modal('hide');
+			}
+		})
+		.fail(function () {
+			throw new Error("AJAX Form submission error");
+		});
 
 });
