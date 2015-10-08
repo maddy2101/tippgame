@@ -7,6 +7,7 @@
 		<!-- Start file EXT:tippgame/Resources/Private/Templates/Tournament/New -->
 		<f:form action="create" controller="Tournament" object="{tournament}"
 				name="tournament" id="ajaxForm">
+			<span class="js-ajaxform-target" data-target="tx-tippgame"></span>
 			<f:flashMessages />
 			<f:render partial="ValidationErrors" section="Main" />
 			<div>
@@ -48,7 +49,7 @@
 				<button type="button" class="btn btn-default" data-dismiss="modal">
 					<f:translate key="button.cancel"/>
 				</button>
-				<button type="button" class="btn btn-primary" id="createTournament">
+				<button type="button" class="btn btn-primary js-ajaxform-submit">
 					<f:translate key="button.create"/>
 				</button>
 			</div>

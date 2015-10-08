@@ -65,10 +65,13 @@ class RoundController extends ActionController
 
     /**
      * @param Tournament|null $tournament
+     * @ignorevalidation $tournament
      */
     public function newAction(Tournament $tournament = null)
     {
-        $this->view->assign('tournament', $tournament);
+        if ($tournament !== null) {
+            $this->view->assign('tournament', $tournament);
+        }
     }
 
     /**
@@ -79,7 +82,7 @@ class RoundController extends ActionController
         $tournament = $round->getTournament();
         $tournament->getRounds()->attach($round);
         $this->tournamentRepository->update($tournament);
-        $this->addFlashMessage('Tournament successful created', 'Success');
+        $this->addFlashMessage('Round successful created', 'Success');
         $this->redirect('show', 'Tournament', null, ['tournament' => $tournament]);
     }
 

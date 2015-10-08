@@ -89,6 +89,7 @@ class TournamentController extends ActionController
 
     /**
      * @param Tournament $tournament
+     * @ignorevalidation $tournament
      */
     public function showAction(Tournament $tournament)
     {
