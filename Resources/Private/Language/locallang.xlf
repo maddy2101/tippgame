@@ -12,6 +12,9 @@
 			<trans-unit id="header.tournament.players">
 				<source>Players</source>
 			</trans-unit>
+			<trans-unit id="header.tournament.teams">
+				<source>Teams</source>
+			</trans-unit>
 			<trans-unit id="button.create">
 				<source>Create</source>
 			</trans-unit>
@@ -32,6 +35,9 @@
 			</trans-unit>
 			<trans-unit id="tab_players">
 				<source>Players</source>
+			</trans-unit>
+			<trans-unit id="tab_teams">
+				<source>Teams</source>
 			</trans-unit>
 			<trans-unit id="actions">
 				<source>Actions</source>
@@ -58,6 +64,18 @@
 			<trans-unit id="tournament.hidden">
 				<source>Hide Tournament</source>
 			</trans-unit>
+			<trans-unit id="tournament.teams">
+				<source>Teams</source>
+			</trans-unit>
+			<trans-unit id="tournament.winner">
+				<source>Winning Team</source>
+			</trans-unit>
+			<trans-unit id="tournament.amount_teams">
+				<source>Amount of teams</source>
+			</trans-unit>
+			<trans-unit id="tournament.amount_rounds">
+				<source>Amount of rounds</source>
+			</trans-unit>
 			<trans-unit id="empty_item">
 				<source>-- choose one --</source>
 			</trans-unit>
@@ -79,6 +97,16 @@
 			</trans-unit>
 			<trans-unit id="round.hidden">
 				<source>Hide Round</source>
+			</trans-unit>
+
+			<trans-unit id="team">
+				<source>Team</source>
+			</trans-unit>
+			<trans-unit id="team.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="team.hidden">
+				<source>Hide Team</source>
 			</trans-unit>
 		</body>
 	</file>

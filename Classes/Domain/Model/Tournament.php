@@ -39,6 +39,16 @@ class Tournament extends AbstractEntity
     protected $stop;
 
     /**
+     * @var int
+     */
+    protected $amountTeams;
+
+    /**
+     * @var int
+     */
+    protected $amountRounds;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUser>
      */
     protected $players = null;
@@ -47,6 +57,25 @@ class Tournament extends AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\ABS\Tippgame\Domain\Model\Round>
      */
     protected $rounds = null;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\ABS\Tippgame\Domain\Model\Team>
+     */
+    protected $teams = null;
+
+    /**
+     * @var \ABS\Tippgame\Domain\Model\Team
+     */
+    protected $winner = null;
+
+    /**
+     * Tournament constructor.
+     */
+    public function __construct() {
+        $this->players = new ObjectStorage();
+        $this->rounds = new ObjectStorage();
+        $this->teams = new ObjectStorage();
+    }
 
     /**
      * get the Title
@@ -179,4 +208,73 @@ class Tournament extends AbstractEntity
         return $sortedRounds;
 
     }
+
+    /**
+     * get the AmountTeams
+     *
+     * @return int
+     */
+    public function getAmountTeams()
+    {
+        return $this->amountTeams;
+    }
+
+    /**
+     * sets the AmountTeams
+     *
+     * @param int $amountTeams
+     *
+     * @return void
+     */
+    public function setAmountTeams($amountTeams)
+    {
+        $this->amountTeams = $amountTeams;
+    }
+
+    /**
+     * get the AmountRounds
+     *
+     * @return int
+     */
+    public function getAmountRounds()
+    {
+        return $this->amountRounds;
+    }
+
+    /**
+     * sets the AmountRounds
+     *
+     * @param int $amountRounds
+     *
+     * @return void
+     */
+    public function setAmountRounds($amountRounds)
+    {
+        $this->amountRounds = $amountRounds;
+    }
+
+    /**
+     * get the Winner
+     *
+     * @return Team
+     */
+    public function getWinner()
+    {
+        return $this->winner;
+    }
+
+    /**
+     * sets the Winner
+     *
+     * @param Team $winner
+     *
+     * @return void
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
+    }
+
+
+
 }

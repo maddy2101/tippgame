@@ -21,7 +21,7 @@ return [
         'searchFields' => 'title',
     ],
     'interface' => [
-        'showRecordFieldList' => 'title,start,stop,players,rounds',
+        'showRecordFieldList' => 'title,start,stop,players,rounds,amount_rounds,amount_teams,winner,teams',
     ],
     'columns' => [
         'title' => [
@@ -107,18 +107,65 @@ return [
             'exclude' => true,
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
                 'size' => 10,
                 'maxitems' => 9999,
                 'foreign_table' => 'fe_users',
-                'foreign_table_where' => ' AND fe_users.pid = 28 AND fe_users.usergroup = 2'
+                'wizards' => [
+                    'suggest' => [
+                        'type' => 'suggest',
+                    ],
+                ],
+            ],
+        ],
+        'teams' => [
+            'label' => 'LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.teams',
+            'exclude' => true,
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'size' => 10,
+                'maxitems' => 9999,
+                'foreign_table' => 'tx_tippgame_domain_model_team',
+                'wizards' => [
+                    'suggest' => [
+                        'type' => 'suggest',
+                    ],
+                ],
+            ],
+        ],
+        'amount_teams' => [
+            'label' => 'LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.amount_teams',
+            'exclude' => true,
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
+        'amount_rounds' => [
+            'label' => 'LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.amount_rounds',
+            'exclude' => true,
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
+        'winner' => [
+            'label' => 'LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.winner',
+            'exclude' => true,
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingleBox',
+                'maxitems' => 1,
+                'size' => 1,
+                'foreign_table' => 'tx_tippgame_domain_model_team',
             ],
         ],
     ],
     'types' => [
         '0' => [
-            'showitem' => 'title,start,stop,
+            'showitem' => 'title,start,stop,amount_rounds,amount_teams,
             --div--;LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tab_rounds, rounds,
             --div--;LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tab_players, players,
+            --div--;LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tab_teams, teams,winner,
             --div--;LLL:EXT:lang/locallang_tca.xlf:be_users.tabs.access, starttime,endtime,hidden,
             --div--;LLL:EXT:lang/locallang_tca.xlf:be_users.tabs.extended',
         ],
