@@ -7,20 +7,9 @@ if (!defined('TYPO3_MODE')) {
 
 ExtensionUtility::configurePlugin(
     'ABS.' . $_EXTKEY,
-    'player',
-    [
-        'Tournament' => 'list',
-    ],
-    []
-);
-
-ExtensionUtility::configurePlugin(
-    'ABS.' . $_EXTKEY,
     'admin',
     [
-        'Administration' => 'list',
-        'Tournament' => 'list, new, create, show',
-        'Round' => 'new,create',
+        'Tournament' => 'current',
     ],
     []
 );

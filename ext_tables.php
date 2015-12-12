@@ -7,11 +7,6 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-ExtensionUtility::registerPlugin(
-	$_EXTKEY,
-	'player',
-	'Tippgame Player View'
-);
 
 ExtensionUtility::registerPlugin(
 	$_EXTKEY,
