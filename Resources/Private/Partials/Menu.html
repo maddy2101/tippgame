@@ -1,0 +1,33 @@
+{namespace abs=ABS\Tippgame\ViewHelpers}
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+<head>
+	<title>Partials: Menu</title>
+</head>
+<body>
+<f:section name="Main">
+	<!-- Start file EXT:tippgame/Resources/Private/Partials/Menu -->
+
+	<f:for each="{abs:menu(controller:controller,action:action)}" as="entryGroup" key="group">
+		<div class="panel panel-default">
+			<div class="panel-heading">{group}</div>
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<f:for each="{entryGroup}" as="active" key="entry">
+					<li role="presentation" <f:if condition="{active}">
+						class="active"
+					</f:if> >
+					<f:link.action action="{entry}" controller="{group}">{entry}</f:link.action>
+					</li>
+
+					</f:for>
+				</ul>
+			</div>
+		</div>
+	</f:for>
+
+	<!-- End file EXT:tippgame/Resources/Private/Partials/Menu -->
+</f:section>
+</body>
+</html>

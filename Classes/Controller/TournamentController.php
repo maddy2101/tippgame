@@ -26,6 +26,5 @@ class TournamentController extends ActionController
      */
     public function currentAction()
     {
-        return 'Hello, current tournament over here!';
     }
 }
