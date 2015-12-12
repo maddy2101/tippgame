@@ -41,12 +41,12 @@ class Tournament extends AbstractEntity
     /**
      * @var int
      */
-    protected $amountTeams;
+    protected $amountTeams = 0;
 
     /**
      * @var int
      */
-    protected $amountRounds;
+    protected $amountRounds = 0;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FrontendUser>

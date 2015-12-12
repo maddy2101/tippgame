@@ -7,12 +7,12 @@
 <body>
 <f:section name="Main">
 	<!-- Start file EXT:tippgame/Resources/Private/Partials/ValidationErrors -->
-	<f:form.validationResults>
-		<f:for each="{validationResults.flattenedErrors}" as="errors">
+	<f:form.validationResults for="{for}">
+		<f:for each="{validationResults.flattenedErrors}" as="errors" key="field">
 			<f:if condition="{errors}">
 				<ul>
 					<f:for each="{errors}" as="error">
-						<li>{error}</li>
+						<li>{field}: {error}</li>
 					</f:for>
 				</ul>
 			</f:if>

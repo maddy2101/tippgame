@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
+<head>
+	<title>Partials: Basic</title>
+</head>
+<body>
+<f:section name="Main">
+	<!-- Start file EXT:tippgame/Resources/Private/Partials/Tournament/Basic -->
+	<f:render partial="ValidationErrors" section="Main" arguments="{for:'tournament'}"/>
+	<div class="form-group">
+		<label class="control-label" for="title">
+			<f:translate
+				key="LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.title"/>
+		</label>
+		<div class="input-group">
+			<f:form.textfield property="title" class="form-control"/>
+				<span class="input-group-addon">
+					<span class="fa fa-pencil"></span>
+				</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="start" class="control-label">
+			<f:translate key="LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.start"/>
+		</label>
+		<div class='input-group date' id='datepicker_start'>
+			<f:form.textfield property="start" class="form-control" value="{tournament.start -> f:format.date(format:'d.m.Y')}"
+							  placeholder="use the datepicker -->"/>
+								<span class="input-group-addon">
+									<span class="fa fa-calendar-minus-o"></span>
+								</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="stop" class="control-label">
+			<f:translate key="LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.stop"/>
+		</label>
+		<div class='input-group date' id='datepicker_stop'>
+			<f:form.textfield property="stop" class="form-control" value="{tournament.stop -> f:format.date(format:'d.m.Y')}"
+							  placeholder="use the datepicker -->"/>
+								<span class="input-group-addon">
+									<span class="fa fa-calendar-plus-o"></span>
+								</span>
+		</div>
+	</div>
+
+	<!-- End file EXT:tippgame/Resources/Private/Partials/Tournament/Basic -->
+</f:section>
+</body>
+</html>

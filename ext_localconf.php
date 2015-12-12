@@ -9,7 +9,7 @@ ExtensionUtility::configurePlugin(
     'ABS.' . $_EXTKEY,
     'admin',
     [
-        'Tournament' => 'current',
+        'Tournament' => 'current,new,edit,update',
     ],
     []
 );
