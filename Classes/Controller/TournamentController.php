@@ -13,12 +13,14 @@
  */
 namespace ABS\Tippgame\Controller;
 
+use ABS\Tippgame\Domain\Model\Team;
 use ABS\Tippgame\Domain\Model\Tournament;
+use ABS\Tippgame\Domain\Repository\TeamRepository;
 use ABS\Tippgame\Domain\Repository\TournamentRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Tournament Controller
@@ -32,6 +34,11 @@ class TournamentController extends ActionController
     protected $tournamentRepository;
 
     /**
+     * @var TeamRepository
+     */
+    protected $teamRepository;
+
+    /**
      * @var PersistenceManager
      */
     protected $persistenceManager;
@@ -42,6 +49,11 @@ class TournamentController extends ActionController
     public function injectTournamentRepository(TournamentRepository $tournamentRepository)
     {
         $this->tournamentRepository = $tournamentRepository;
+    }
+
+    public function injectTeamRepository(TeamRepository $teamRepository)
+    {
+        $this->teamRepository = $teamRepository;
     }
 
     /**
@@ -77,8 +89,13 @@ class TournamentController extends ActionController
     /**
      * render current tournament
      */
-    public function currentAction()
+    public function currentAction(Tournament $tournament = null)
     {
+        $tournaments = $this->tournamentRepository->findAllCurrentAndFuture();
+        if ($tournament !== null) {
+            $this->view->assign('openTournament', $tournament);
+        }
+        $this->view->assign('tournaments', $tournaments);
     }
 
     /**
@@ -95,6 +112,8 @@ class TournamentController extends ActionController
      */
     public function editAction(Tournament $tournament)
     {
+        $teams = $this->teamRepository->findAll();
+        $this->view->assign('teams', $teams);
         $this->tournamentRepository->add($tournament);
         $this->persistenceManager->persistAll();
         $tournament = $this->tournamentRepository->findOneByTitle($tournament->getTitle());
@@ -108,6 +127,30 @@ class TournamentController extends ActionController
      */
     public function updateAction(Tournament $tournament)
     {
+        $teams = new ObjectStorage();
+        $existingTeams = $this->request->getArgument('teams');
+        if (count($existingTeams) > 0) {
+            foreach ($existingTeams as $teamUid) {
+                $team = $this->teamRepository->findByUid((int)$teamUid);
+                if ($team instanceof Team) {
+                    $teams->attach($team);
+                }
+            }
+        }
+        $toCreate = $this->request->getArgument('create');
+        $teamsToCreate = $toCreate['teams'];
+        if (count($teamsToCreate) > 0) {
+            foreach ($teamsToCreate as $teamName) {
+                if (strlen($teamName)) {
+                    $team = $this->objectManager->get(Team::class);
+                    $team->setName($teamName);
+                    $teams->attach($team);
+                }
+            }
+        }
+        $tournament->setTeams($teams);
+
         $this->tournamentRepository->update($tournament);
+        $this->forward('current', null, null, ['tournament' => $tournament]);
     }
 }

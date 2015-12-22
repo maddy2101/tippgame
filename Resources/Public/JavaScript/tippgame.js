@@ -3,6 +3,7 @@
  */
 $(document).ready(function () {
 	initializeDateTimePicker();
+	initializeMultiSelect();
 
 	function initializeDateTimePicker() {
 		$('#datepicker_start').datetimepicker({
@@ -18,5 +19,9 @@ $(document).ready(function () {
 		$("#datepicker_stop").on("dp.change", function (e) {
 			$('#datepicker_start').data("DateTimePicker").maxDate(e.date);
 		});
+	}
+
+	function initializeMultiSelect() {
+		$('.multiselect').multiselect();
 	}
 });

@@ -12,6 +12,7 @@ page.includeJS {
 	bootstrap = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js
 	bootstrap.external = 1
 	datetime-picker = EXT:tippgame/Resources/components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js
+	multiselect = EXT:tippgame/Resources/Public/JavaScript/bootstrap-multiselect.js
 	tippgame = EXT:tippgame/Resources/Public/JavaScript/tippgame.js
 }
 
@@ -21,4 +22,5 @@ page.includeCSS {
 	fontawesome = https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css
 	fontawesome.external = 1
 	datetime-picker = EXT:tippgame/Resources/components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
+	multiselect = EXT:tippgame/Resources/Public/StyleSheets/bootstrap-multiselect.css
 }

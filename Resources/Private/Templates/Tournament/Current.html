@@ -4,14 +4,21 @@
 	<title>Templates: Current</title>
 
 	<f:section name="menu">
-		<f:render partial="Menu" arguments="{controller:'Tournament',action:'current'}" section="Main"/>
+		<f:render partial="Menu" arguments="{controller:'Tournament',action:'current'}"
+				  section="Main"/>
 	</f:section>
 
 	<f:section name="main">
 		<!-- Start file EXT:tippgame/Resources/Private/Templates/Tournament\Current -->
-		<p>
-			Hello, this is current tournament view speaking.
-		</p>
+		<f:for each="{tournaments}" as="tournament" iteration="iterator">
+			<f:if condition="{tournament} == {openTournament}">
+				<p>=== this is the open one! ====</p>
+			</f:if>
+			<p>{iterator.cycle}.</p>
+			<p>{tournament.title}</p>
+			<p>{tournament.start -> f:format.date(format:'d.m.Y')} - {tournament.stop -> f:format.date(format:'d.m.Y')}</p>
+			<hr />
+		</f:for>
 		<!-- End file EXT:tippgame/Resources/Private/Templates/Tournament\Current -->
 	</f:section>
 </div>

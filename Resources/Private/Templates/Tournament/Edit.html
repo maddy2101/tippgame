@@ -1,3 +1,4 @@
+{namespace abs=ABS\Tippgame\ViewHelpers}
 <div xmlns="http://www.w3.org/1999/xhtml" lang="en"
 	 xmlns:f="http://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers">
 	<f:layout name="Default"/>
@@ -13,6 +14,21 @@
 		<f:form action="update" controller="Tournament" object="{tournament}" name="tournament">
 			<f:flashMessages />
 			<f:render partial="Tournament/Basic" section="Main" arguments="{tournament:tournament}" />
+
+			<div class="form-group">
+				<label for="teams" class="control-label">
+					<f:translate
+						key="LLL:EXT:tippgame/Resources/Private/Language/locallang.xlf:tournament.teams"/>
+				</label>
+				<span class="help-block">If the team is not yet in the list, create it using the input field.</span>
+				<abs:loop start="{tournament.teams -> f:count()}" end="{tournament.amountTeams}">
+					<label class="control-label">#{iCycle}</label>
+					<f:form.select name="teams[{i}]" class="form-control"
+								   options="{teams}" prependOptionLabel="choose Team" optionLabelField="name"
+								   prependOptionValue="0"/>
+					<f:form.textfield name="create[teams][{i}]" class="form-control" placeholder="or create new"/>
+				</abs:loop>
+			</div>
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">

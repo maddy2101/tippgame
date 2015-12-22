@@ -32,4 +32,18 @@ class TournamentRepository extends Repository
 
         return $query->execute();
     }
+
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAllCurrentAndFuture()
+    {
+        $today = new \DateTime('midnight');
+        $query = $this->createQuery();
+        $query->matching(
+            $query->greaterThanOrEqual('stop', $today->getTimestamp())
+        );
+        $query->setOrderings(['start' => QueryInterface::ORDER_DESCENDING]);
+        return $query->execute();
+    }
 }

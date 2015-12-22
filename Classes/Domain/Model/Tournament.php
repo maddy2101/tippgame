@@ -275,6 +275,28 @@ class Tournament extends AbstractEntity
         $this->winner = $winner;
     }
 
+    /**
+     * get the Teams
+     *
+     * @return ObjectStorage
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    /**
+     * sets the Teams
+     *
+     * @param ObjectStorage $teams
+     *
+     * @return void
+     */
+    public function setTeams($teams)
+    {
+        $this->teams = $teams;
+    }
+
 
 
 }

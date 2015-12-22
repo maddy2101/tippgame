@@ -25,4 +25,28 @@ class Team extends AbstractEntity
      * @var string
      */
     protected $name;
+
+    /**
+     * get the Name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * sets the Name
+     *
+     * @param string $name
+     *
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+
 }
